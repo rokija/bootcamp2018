@@ -4,6 +4,13 @@ import { Link } from "react-router-dom";
 import "./index.css";
 
 class Login extends Component {
+  state = {
+    email: "",
+    password: ""
+  };
+
+  onChange = e => this.setState({ [e.target.name]: e.target.value });
+
   render() {
     return (
       <div className="Login">
@@ -21,7 +28,10 @@ class Login extends Component {
           </div>
           <div className="Login_form-label-group">
             <input
+              onChange={this.onChange}
+              value={this.state.email}
               className="form-control"
+              autoComplete="new-email"
               placeholder="Email"
               name="email"
               type="email"
@@ -32,6 +42,8 @@ class Login extends Component {
           </div>
           <div className="Login_form-label-group">
             <input
+              onChange={this.onChange}
+              value={this.state.password}
               className="form-control"
               placeholder="Password"
               autoComplete="new-password"
