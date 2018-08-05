@@ -22,6 +22,27 @@ module.exports = {
       {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, "css-loader"]
+      },
+      {
+        test: /\.svg$/,
+        use: [
+          {
+            loader: "svg-sprite-loader",
+            options: {
+              runtimeCompat: true,
+              include: /tb-icons\/lib\/svgs/
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: [
+          {
+            loader: "file-loader",
+            options: {}
+          }
+        ]
       }
     ]
   },
