@@ -9,7 +9,16 @@ class Login extends Component {
     password: ""
   };
 
+  redirect = () => this.props.history.push("/");
+
   onChange = e => this.setState({ [e.target.name]: e.target.value });
+
+  loginHandler = () =>
+    this.props.login(this.state).then(res => {
+      if (res) {
+        setTimeout(() => this.redirect(), 1000);
+      }
+    });
 
   render() {
     return (
@@ -54,7 +63,11 @@ class Login extends Component {
             />
             <label htmlFor="inputPassword">Password</label>
           </div>
-          <Button type="button" className="btn btn-primary btn-lg btn-block">
+          <Button
+            onClick={this.loginHandler}
+            type="button"
+            className="btn btn-primary btn-lg btn-block"
+          >
             Sign in
           </Button>
           <Link
